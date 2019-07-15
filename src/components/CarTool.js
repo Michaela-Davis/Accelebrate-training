@@ -1,6 +1,11 @@
 import React from 'react';
 
 export const CarTool = () => {
+  const cars = [
+    {id:'1', make:'subaru', model:'legacy', year:'2003', color:'teal', price:'3500'},
+    {id:'2', make:'subaru', model:'outback', year:'2012', color:'blue', price:'5000'}
+  ];
+
   return <>
     <header>
       <h1>Car Tool</h1>
@@ -17,23 +22,17 @@ export const CarTool = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>subaru</td>
-          <td>legacy</td>
-          <td>2003</td>
-          <td>teal</td>
-          <td>35000</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>subaru</td>
-          <td>outback</td>
-          <td>2012</td>
-          <td>blue</td>
-          <td>5000</td>
-        </tr>
-      </tbody>
+        {cars.map((car, index) => 
+          <tr key={index}>
+            <td>{car.id}</td>
+            <td>{car.make}</td>
+            <td>{car.model}</td>
+            <td>{car.year}</td>
+            <td>{car.color}</td>
+            <td>{car.price}</td>
+          </tr>
+        )}
+        </tbody>
     </table>
   </>
 };

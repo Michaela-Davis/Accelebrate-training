@@ -15,3 +15,10 @@ if you want your fragment tags to line up, rather than have unaligned fragment t
   );
 ```
 * you can alias things when you do named imports `import { HelloWorld as Hello WorldB } from '.components/React`
+* when hooks became offical, class-based components became no longer necessary
+* the argument comes from the parent context, is evaluated, while the parameter is is used in the child
+* paramenters are never an expression
+* arguments are always an expression
+`<ColorTool parameter={ argument }/>`
+* https://reactjs.org/docs/typechecking-with-proptypes.html
+* 

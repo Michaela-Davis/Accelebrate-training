@@ -1,14 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export const ColorTool = () => {
+export const ColorTool = (props) => {
+  const colors = ['blue', 'chartreuse', 'teal', 'cyan', 'black'];
+
   return <header>
       <h1>Color Tool</h1>
         <ul>
-          <li>blue</li>
-          <li>chartruse</li>
-          <li>teal</li>
-          <li>cyan</li>
-          <li>black</li>
+          {props.colors.map((color, index) => <li key={index}> {color}</li>)}
         </ul>
     </header>;
+};
+
+ColorTool.defaultProps = {
+  colors: [],
+};
+
+ColorTool.propTypes = {
+  colors: PropTypes.arrayOf(PropTypes.string),
 };
