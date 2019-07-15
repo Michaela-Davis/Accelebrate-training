@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 import { useForm } from '../hooks/useForm';
 
+import { TextInput, NumInput, Button } from "./FormControls";
+import { ToolHeader } from './ToolHeader';
+import { UnorderedList } from './UnorderedList';
+
 export const ColorTool = (props) => {
 
   const [ colorForm, change,] = useForm({
@@ -16,25 +20,22 @@ export const ColorTool = (props) => {
   };
 
   return <>
-    <header>
-        <h1>Color Tool</h1>
-    </header>
-    <ul>
-      {colors.length=== 0 && <li>There are no colors.</li>}
-      {colors.map((color, index) => <li key={index}> {color}</li>)}
-    </ul>
+    <ToolHeader headerText='Color Tool'/>
+    <UnorderedList items={colors} emptyListText="There are no colors.">
+      {item=><b>{item.toUpperCase()}</b>}
+    </UnorderedList>
     <form>
       <div>
         <label htmlFor="color-input">Color:</label>
-        <input type="text" id='color-input' name='color'
+        <TextInput id='color-input' name='color'
           value={ colorForm.color } onChange={ change }/>
       </div>
       <div>
         <label htmlFor="hexcode-input">hexcode:</label>
-        <input type="number" id='hexcode-input' name='hexcode'
+        <NumInput id='hexcode-input' name='hexcode'
           value={ colorForm.hexcode } onChange={ change }/>
       </div>
-      <button type='button' onClick={addColor}>Add Color</button>
+      <Button onClick={addColor}>Add Color</Button>
     </form>
   </>
 };
