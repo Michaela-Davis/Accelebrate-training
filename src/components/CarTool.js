@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-export const CarTool = () => {
-  const cars = [
-    {id:'1', make:'subaru', model:'legacy', year:'2003', color:'teal', price:'3500'},
-    {id:'2', make:'subaru', model:'outback', year:'2012', color:'blue', price:'5000'}
-  ];
+import { useForm } from '../hooks/useForm';
 
-  const [ 
-    carForm, 
-    setCarForm,
-  ] = useState({
+export const CarTool = (props) => {
+
+  const [ carForm, change,] = useForm({
     id: '',
     make: '',
     model: '',
@@ -19,18 +14,14 @@ export const CarTool = () => {
     price: '',
   });
 
+  const [ cars, setCars ] = useState(props.cars.concat());
 
-  const change = ({ target: {name, type, value} }) => {
-    setCarForm({
-      ...carForm,
-      [ name ]: value === 'number'
-        ? Number(value)
-        : value,
-    });
+  const addCar= () => {
+    const nextId= Math.max(...cars.map(c => c.id), 0) +1
+    setCars(cars.concat(carForm.car));
   };
 
-  console.log(carForm);
-
+  console.log(carForm.car);
 
   return <>
     <header>
@@ -73,7 +64,7 @@ export const CarTool = () => {
       </div>
       <div>
         <label htmlFor="year-input">year:</label>
-        <input type="number" id='year-input' name='year'
+        <input type="text" id='year-input' name='year'
           value={ carForm.year } onChange={ change }/>
       </div>
       <div>
@@ -83,9 +74,18 @@ export const CarTool = () => {
       </div>
       <div>
         <label htmlFor="price-input">price:</label>
-        <input type="number" id='price-input' name='price'
+        <input type="text" id='price-input' name='price'
           value={ carForm.price } onChange={ change }/>
       </div>
+      <button type='button' onClick={addCar}>Add Car</button>
     </form>
   </>
+};
+
+CarTool.defaultProps = {
+  cars: [],
+};
+
+CarTool.propTypes = {
+  cars: PropTypes.arrayOf(PropTypes.string),
 };

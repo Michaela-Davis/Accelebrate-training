@@ -1,34 +1,27 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { useForm } from '../hooks/useForm';
+
 export const ColorTool = (props) => {
-  // const colors = ['blue', 'chartreuse', 'teal', 'cyan', 'black'];
-  const [ 
-    colorForm, 
-    setColorForm,
-  ] = useState({
-    color: '',
-    hexcode: '',
+
+  const [ colorForm, change,] = useForm({
+    color: '', hexcode: '',
   });
 
-  const change = ({ target: {name, type, value} }) => {
-    setColorForm({
-      ...colorForm,
-      [ name ]: value === 'number'
-        ? Number(value)
-        : value,
-    });
-  };
+  const [ colors, setColors ] = useState(props.colors.concat());
 
-  console.log(colorForm);
+  const addColor = () => {
+    setColors(colors.concat(colorForm.color));
+  };
 
   return <>
     <header>
         <h1>Color Tool</h1>
     </header>
     <ul>
-      {props.colors.length=== 0 && <li>There are no colors.</li>}
-      {props.colors.map((color, index) => <li key={index}> {color}</li>)}
+      {colors.length=== 0 && <li>There are no colors.</li>}
+      {colors.map((color, index) => <li key={index}> {color}</li>)}
     </ul>
     <form>
       <div>
@@ -41,6 +34,7 @@ export const ColorTool = (props) => {
         <input type="number" id='hexcode-input' name='hexcode'
           value={ colorForm.hexcode } onChange={ change }/>
       </div>
+      <button type='button' onClick={addColor}>Add Color</button>
     </form>
   </>
 };
