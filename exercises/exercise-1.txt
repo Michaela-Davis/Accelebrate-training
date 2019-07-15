@@ -1,0 +1,19 @@
+https://gitlab.com/t4d-classes/react-gatsby_07152019
+
+https://zoom.us/j/685704270
+
+Exercise 1
+
+https://gitlab.com/t4d-classes/react-gatsby_07152019
+
+1. Create a new component named Car Tool.
+
+2. In the Car Tool component display a header using a header element and an h1 element. The content of the h1 will be 'Car Tool'
+
+header
+ |- h1
+     |- Car Tool
+
+3. Import the Car Tool component into index.js and display it beneath Hell World. Both should be displayed at same time. Use only on ReactDOM.render
+
+4. Ensure it works.
