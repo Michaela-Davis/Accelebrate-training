@@ -1,5 +1,5 @@
 // HelloWorld is capatilized because it's a React component. All components must be captialized for JSX to understand them
-```javscript
+```javascript
 const HelloWorld = () => {
   // return React.createElement('h1', null, 'Hello World');
   return <h1>Hello World</h1>; // gets convertered to ^
@@ -21,4 +21,14 @@ if you want your fragment tags to line up, rather than have unaligned fragment t
 * arguments are always an expression
 `<ColorTool parameter={ argument }/>`
 * https://reactjs.org/docs/typechecking-with-proptypes.html
-* 
+* NEVER MUTATE PROPS BEING PASSED IN
+* look up "Property Descriptors" re `console.log(Object.isFrozen(props));`
+  * we can have protection on `props` but not the object itself so that's why things like  `props.colors.push('orange');` work though we shouldn't use them
+  * anything we access via props should not be modified
+* we're going to use `state hooks` instead of `this.setState`
+```
+  const [ 
+    color, // state data
+    setColor // state update function
+  ] = useState(''); // intial data only used on first render
+```
