@@ -1,14 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const ViewCarRow = (props) => {
+export const ViewCarRow = (car, onDeleteCar) => {
+  
+  const deleteCar = () => {
+    onDeleteCar(car.id);
+  };
+
   return <tr>
-  <td>{props.car.id}</td>
-  <td>{props.car.make}</td>
-  <td>{props.car.model}</td>
-  <td>{props.car.year}</td>
-  <td>{props.car.color}</td>
-  <td>{props.car.price}</td>
+  <td>{car.id}</td>
+  <td>{car.make}</td>
+  <td>{car.model}</td>
+  <td>{car.year}</td>
+  <td>{car.color}</td>
+  <td>{car.price}</td>
+  <td>
+    <button type='button' onClick={deleteCar}>Delete</button>
+  </td>
 </tr>
 };
 
@@ -18,4 +26,5 @@ ViewCarRow.defaultProps = {
 
 ViewCarRow.propTypes = {
   car: PropTypes.object,
+  onDeleteCar: PropTypes.func.isRequired,
 };  

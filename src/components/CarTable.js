@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { ViewCarRow } from './ViewCarRow';
 
-export const CarTable = (props) => {
+export const CarTable = ({cars, onDeleteCar: deleteCar,}) => {
 
   return <table>
   <thead>
@@ -14,11 +14,12 @@ export const CarTable = (props) => {
       <th>Year</th>
       <th>Color</th>
       <th>Price</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-  {props.cars.map((car, index) => 
-    <ViewCarRow key={index} car={car}/>
+  {cars.map((car, index) => 
+    <ViewCarRow key={index} car={car} onDeleteCar={deleteCar}/>
     )}
     </tbody>
 </table>
@@ -30,5 +31,6 @@ CarTable.defaultProps = {
 
 CarTable.propTypes = {
   cars: PropTypes.array,
+  onDeleteCar: PropTypes.func.isRequired,
 };
 

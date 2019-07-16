@@ -22,7 +22,7 @@ export const ColorTool = (props) => {
   return <>
     <ToolHeader headerText='Color Tool'/>
     <UnorderedList items={colors} emptyListText="There are no colors.">
-      {item=><b>{item.toUpperCase()}</b>}
+      {item => <b>{item.toUpperCase()}</b>}
     </UnorderedList>
     <form>
       <div>
