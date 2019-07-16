@@ -24,7 +24,7 @@ export const EditCarRow = ({
     <td><input type="text" name='model' value={car.model} onChange={ change }/></td>
     <td><input type="text" name='year' value={car.year} onChange={ change }/></td>
     <td><input type="text" name='color' value={car.color} onChange={ change }/></td>
-    <td><input type="text" name='price' value={car.price} onChange={ change }/></td>
+    <td><input type="number" name='price' value={car.price} onChange={ change }/></td>
     <td>
       <button type='button' onClick={saveCar}>
         Save

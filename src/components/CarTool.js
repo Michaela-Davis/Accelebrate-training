@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
+import { getAllCars, appendCar } from '../services/cars';
 
 import { ToolHeader } from './ToolHeader';
 import { CarTable } from './CarTable';
@@ -10,7 +12,20 @@ export const CarTool = (props) => {
   const [ cars, setCars ] = useState(props.cars.concat());
   const [ editCarId, setEditCarId ] = useState(-1);
 
+  useEffect(() => {
+    getAllCars()
+      .then(cars => setCars(cars));
+  }, []);
+
   const addCar= (car) => {
+
+    appendCar(car)
+      .then(() => getAllCars())
+      .then(cars => {
+        setCars(cars);
+        setEditCarId(-1);
+      });
+
     const nextId= Math.max(...cars.map(c => c.id), 0) +1
     setCars(cars.concat({...car, id:nextId}));
     setEditCarId(-1);
