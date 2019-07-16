@@ -20,7 +20,7 @@ export const CarTable = ({cars, editCarId, onEditCar: editCar, onDeleteCar: dele
   </thead>
   <tbody>
   {cars.map(car => car.id === editCarId
-    ? <EditCarRow key={car.id} car={car} onSaveCar={saveCar} onCancel={cancelCar}/>
+    ? <EditCarRow key={car.id} car={car} onSaveCar={saveCar} onCancelCar={cancelCar}/>
     : <ViewCarRow key={car.id} car={car} onEditCar={editCar} onDeleteCar={deleteCar}/>)}
     </tbody>
 </table>

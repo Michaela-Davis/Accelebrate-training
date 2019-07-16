@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const ViewCarRow = (car, onDeleteCar: deleteCar, onEditCar: editCar,) => {
+export const ViewCarRow = ({car, onDeleteCar: deleteCar, onEditCar: editCar,}) => {
   
   return <tr>
   <td>{car.id}</td>

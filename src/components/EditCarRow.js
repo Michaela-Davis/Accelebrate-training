@@ -10,22 +10,30 @@ export const EditCarRow = ({
 }) => {
   
   const [ carForm, change ] = useForm({...car});
+
+  const saveCar = () => {
+    onSaveCar({
+      ...carForm,
+      id: car.id,
+    });
+  }
+
   return <tr>
-  <td>{car.id}</td>
-  <td><input type="text" name='make' value={car.make} onChange={ change }/></td>
-  <td><input type="text" name='model' value={car.model} onChange={ change }/></td>
-  <td><input type="text" name='year' value={car.year} onChange={ change }/></td>
-  <td><input type="text" name='color' value={car.color} onChange={ change }/></td>
-  <td><input type="text" name='price' value={car.price} onChange={ change }/></td>
-  <td>
-    <button type='button' onClick={()=> null}>
-      Save
-    </button>
-    <button label='edit' type='button' onClick={()=> null}>
-      Cancel
-    </button>
-  </td>
-</tr>
+    <td>{car.id}</td>
+    <td><input type="text" name='make' value={car.make} onChange={ change }/></td>
+    <td><input type="text" name='model' value={car.model} onChange={ change }/></td>
+    <td><input type="text" name='year' value={car.year} onChange={ change }/></td>
+    <td><input type="text" name='color' value={car.color} onChange={ change }/></td>
+    <td><input type="text" name='price' value={car.price} onChange={ change }/></td>
+    <td>
+      <button type='button' onClick={saveCar}>
+        Save
+      </button>
+      <button type='button' onClick={onCancelCar}>
+        Cancel
+      </button>
+    </td>
+  </tr>
 };
 
 EditCarRow.propTypes = {
